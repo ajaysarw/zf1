@@ -1,0 +1,33 @@
+<style>
+	table td {
+		border: 1px solid black;
+	}
+</style>
+
+<p>
+	<a href="<?php echo $this->url(array('controller'=>'album', 'action'=>'add'));?>">Add new album</a>
+</p>
+
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Artist</th>
+		<th>Action</th>
+	</tr>
+	
+	<?php foreach($this->albums as $album) : ?>
+	
+	<tr>
+		<!-- By default, the escape() method uses the PHP htmlspecialchars() function for escaping -->
+		<!-- By default, the escape() method uses the PHP htmlspecialchars() function for escaping -->
+
+		<td><?php echo $this->escape($album->title);?></td>
+		<td><?php echo $this->escape($album->artist);?></td>
+		<td>
+<a href="<?php echo $this->url(
+								array('controller'=>'album', 'action'=>'edit', 'id'=>$album->id));?>"> Edit </a> &nbsp;
+<a href="<?php echo $this->url(array('controller'=>'album', 'action'=>'delete', 'id'=>$album->id));?>"> Delete</a>
+		</td>
+	</tr>
+	<?php endforeach; ?>
+</table>

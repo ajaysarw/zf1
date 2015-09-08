@@ -1,0 +1,44 @@
+<style>
+	table td {
+		border: 1px solid black;
+	}
+</style>
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Supplier</b> and script/action name <b>index</b></p>
+</div>
+
+
+<?php 
+	
+	if (!empty($this->message)) {
+		print_r($this->message);				
+	}
+
+	?>
+
+<p>
+	<a href="<?php echo $this->url(array('controller'=>'user', 'action'=>'add'));?>">Add new user</a>
+	
+</p>
+
+<table>
+	<tr>
+		<th>Title</th> 		<th>Artist</th>		<th>Action</th>
+	</tr>
+	
+	<?php foreach($this->suppliers as $supplier) : ?>
+	
+	<tr>
+		<!-- By default, the escape() method uses the PHP htmlspecialchars() function for escaping -->
+		<!-- By default, the escape() method uses the PHP htmlspecialchars() function for escaping -->
+
+		<td><?php echo $this->escape($supplier['ContactName']);?></td>		
+		<td>
+<a href="<?php echo $this->url(
+								array('controller'=>'supplier', 'action'=>'edit', 'id'=>$supplier['SupplierID']));?>"> Edit </a> &nbsp;
+<a href="<?php echo $this->url(array('controller'=>'supplier', 'action'=>'delete', 'id'=>$supplier['SupplierID']));?>"> Delete</a>
+		</td>
+	</tr>
+	<?php endforeach; ?>
+</table>
